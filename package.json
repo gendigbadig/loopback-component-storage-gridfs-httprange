@@ -20,7 +20,6 @@
   "author": "Rahmat Nugraha",
   "license": "ISC",
   "dependencies": {
-    "brake": "^1.0.1",
     "busboy": "^0.2.12",
     "gridfs-stream": "^1.1.1",
     "lodash": "^4.6.1",
