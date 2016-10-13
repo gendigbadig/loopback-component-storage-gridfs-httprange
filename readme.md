@@ -33,7 +33,7 @@ Add datasource to your datasources.json
    "port": 27017,
    "database": "database",
    "username": "username",
-   "password": "password"
+   "password": "password",
    "limit" : 320000
  }
 ```
