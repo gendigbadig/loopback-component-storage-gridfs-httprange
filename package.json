@@ -1,29 +1,80 @@
 {
-  "name": "loopback-component-storage-gridfs-httprange",
-  "version": "1.0.7",
-  "description": "mrmartinimo loopback storage component gridfs with httprange support",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/gendigbadig/loopback-component-storage-gridfs-httprange.git"
-  },
-  "keywords": [
-    "loopback",
-    "mongodb",
-    "gridfs",
-    "httprange",
-    "http-range"
+  "_args": [
+    [
+      {
+        "raw": "git+https://gendigbadig:pedulirakyat12@gitlab.suararadio.com/cyclone/loopback-component-storage-gridfs-httprange.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "git+https://gendigbadig:pedulirakyat12@gitlab.suararadio.com/cyclone/loopback-component-storage-gridfs-httprange.git",
+        "spec": "https://gendigbadig:pedulirakyat12@gitlab.suararadio.com/cyclone/loopback-component-storage-gridfs-httprange.git",
+        "type": "git"
+      },
+      "/Volumes/DATA/Development/zamrud/cyclone-backend-audio"
+    ]
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "_from": "git+https://gendigbadig:pedulirakyat12@gitlab.suararadio.com/cyclone/loopback-component-storage-gridfs-httprange.git",
+  "_id": "loopback-component-storage-gridfs-httprange@1.0.7",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/loopback-component-storage-gridfs-httprange",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "git+https://gendigbadig:pedulirakyat12@gitlab.suararadio.com/cyclone/loopback-component-storage-gridfs-httprange.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "git+https://gendigbadig:pedulirakyat12@gitlab.suararadio.com/cyclone/loopback-component-storage-gridfs-httprange.git",
+    "spec": "https://gendigbadig:pedulirakyat12@gitlab.suararadio.com/cyclone/loopback-component-storage-gridfs-httprange.git",
+    "type": "git"
   },
-  "author": "Rahmat Nugraha",
-  "license": "ISC",
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://gendigbadig:pedulirakyat12@gitlab.suararadio.com/cyclone/loopback-component-storage-gridfs-httprange.git#0ebe544060c43ecee174fb288884a4d0f14469e4",
+  "_shasum": "11bf00bc2e689daf7c290da851bc890241170826",
+  "_shrinkwrap": null,
+  "_spec": "git+https://gendigbadig:pedulirakyat12@gitlab.suararadio.com/cyclone/loopback-component-storage-gridfs-httprange.git",
+  "_where": "/Volumes/DATA/Development/zamrud/cyclone-backend-audio",
+  "author": {
+    "name": "Rahmat Nugraha"
+  },
+  "bugs": {
+    "url": "https://github.com/gendigbadig/loopback-component-storage-gridfs-httprange/issues"
+  },
   "dependencies": {
     "brake": "^1.0.1",
     "busboy": "^0.2.12",
     "gridfs-stream": "^1.1.1",
     "lodash": "^4.6.1",
     "mongodb": "^2.1.7"
-  }
+  },
+  "description": "mrmartinimo loopback storage component gridfs with httprange support",
+  "devDependencies": {},
+  "gitHead": "0ebe544060c43ecee174fb288884a4d0f14469e4",
+  "homepage": "https://github.com/gendigbadig/loopback-component-storage-gridfs-httprange#readme",
+  "keywords": [
+    "loopback",
+    "mongodb",
+    "gridfs",
+    "httprange",
+    "http-range",
+    "limit",
+    "bandwidth limit"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "loopback-component-storage-gridfs-httprange",
+  "optionalDependencies": {},
+  "readme": "# loopback-component-storage-gridfs-httprange\n\nThis repo is modification from https://github.com/MrMartiniMo/loopback-component-storage-gridfs \nMade by my friend, ocky setyatmoko\n\nUses mongoDB [GridFS](https://docs.mongodb.org/manual/core/gridfs/) to manage binary contents of your loopback application.\n\n### Inspired by\n* https://github.com/strongloop/loopback-component-storage\n* https://github.com/jdrouet/loopback-component-storage-mongo\n* https://github.com/MrMartiniMo/loopback-component-storage-gridfs \n\n### Behaviors\n\n* Files are identified by id, not by file name. So it is possible to have files of the same name in one container.\n* Added HTTP Range Feature \n\n## Installation\n\n```bash\nnpm install --save loopback-component-storage-gridfs-httprange\n```\n\n## Datasource\n\nAdd datasource to your datasources.json\n\n```json\n\"storage\": {\n   \"name\": \"gridfs\",\n   \"connector\": \"loopback-component-storage-gridfs-httprange\",\n   \"host\": \"hostname\",\n   \"port\": 27017,\n   \"database\": \"database\",\n   \"username\": \"username\",\n   \"password\": \"password\"\n }\n```\n\n**username** and **password** are optional\n\n## API\n\n### List containers\n\n```\nGET /FileContainers\n```\n```javascript\nFileContainer.getContainers();\n```\n\n<hr>\n\n### Delete container\n\n```\nDELETE /FileContainers/:containerName\n```\n```javascript\nFileContainer.deleteContainer({\n  containerName: 'containerName',\n  fileId: 'fileId'\n});\n```\n\n  * **containerName** - name of container to delete\n\n<hr>\n\n### List files in container\n\n```\nGET /FileContainers/:containerName/files\n```\n```javascript\nFileContainer.getFiles({\n  containerName: 'containerName'\n});\n```\n\n  * **containerName** - name of container\n\n<hr>\n\n### Get file information\n\n```\nGET /FileContainers/:containerName/files/:fileId\n```\n```javascript\nFileContainer.getFile({\n  containerName: 'containerName',\n  fileId: 'fileId'\n});\n```\n\n  * **containerName** - name of container\n  * **fileId** - id of file\n\n<hr>\n\n### Delete file\n\n```\nDELETE /FileContainers/:containerName/files/:fileId\n```\n```javascript\nFileContainer.deleteFile({\n  containerName: 'containerName',\n  fileId: 'fileId'\n});\n```\n\n* **containerName** - name of container\n* **fileId** - id of file to delete\n\n<hr>\n\n### Upload files\n\n```\nPOST /FileContainers/:containerName/upload\n```\n\n* **containerName** - name of container\n\n<hr>\n\n### Download file\n\n```\nGET /FileContainers/:containerName/download/:fileId\n```\n\n* **containerName** - name of container\n* **fileId** - id of file to download\n",
+  "readmeFilename": "readme.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gendigbadig/loopback-component-storage-gridfs-httprange.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.8"
 }
